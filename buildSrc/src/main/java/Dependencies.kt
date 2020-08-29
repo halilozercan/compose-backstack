@@ -5,7 +5,8 @@ object Versions {
 
     const val targetSdk = 29
     val agp = loadPropertyFromResources(versionsFile, "androidGradlePluginVersion")
-    const val compose = "0.1.0-dev14"
+    private val composeDev = loadPropertyFromResources(versionsFile, "composeDevVersion")
+    val compose = "0.1.0-$composeDev"
     val kotlin = loadPropertyFromResources(versionsFile, "kotlinVersion")
     val dokka = loadPropertyFromResources(versionsFile, "dokkaVersion")
 }
@@ -35,13 +36,13 @@ object Dependencies {
     }
 
     object Compose {
-        const val foundation = "androidx.ui:ui-foundation:${Versions.compose}"
-        const val icons = "androidx.ui:ui-material-icons-extended:${Versions.compose}"
-        const val material = "androidx.ui:ui-material:${Versions.compose}"
-        const val savedstate = "androidx.ui:ui-saved-instance-state:${Versions.compose}"
-        const val test = "androidx.ui:ui-test:${Versions.compose}"
-        const val tooling = "androidx.ui:ui-tooling:${Versions.compose}"
-        const val util = "androidx.ui:ui-util:${Versions.compose}"
+        val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+        val icons = "androidx.compose.material:material-icons-extended:${Versions.compose}"
+        val material = "androidx.compose.material:material:${Versions.compose}"
+        val savedstate = "androidx.compose.runtime:runtime-saved-instance-state:${Versions.compose}"
+        val test = "androidx.ui:ui-test:${Versions.compose}"
+        val tooling = "androidx.ui:ui-tooling:${Versions.compose}"
+        val util = "androidx.compose.ui:ui-util:${Versions.compose}"
     }
 
     object Kotlin {
@@ -49,7 +50,6 @@ object Dependencies {
             "org.jetbrains.kotlinx:binary-compatibility-validator:0.2.1"
         val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
         val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
         val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
 
         object Test {
